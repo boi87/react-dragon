@@ -208,7 +208,13 @@ class Dragon extends React.Component {
     return (
       <div>
         <h1>Release the dragon</h1>
-        <button onClick={this.handleClick}>start</button>
+        <button id="btn_start" onClick={this.handleClick}>
+          start
+        </button>
+        <button id="btn_stop" onClick="">
+          stop
+        </button>
+
         <div
           tabIndex="1"
           className="Board"
