@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import Cell from "./Cell";
+// import Cell from "./Cell";
 
 const CELL_SIZE = 20;
 const ax = Math.floor(Math.random() * 39);
@@ -10,11 +10,11 @@ class Apple extends React.Component {
   state = {
     x: ax,
     y: ay
+    // log: console.log("diocan", this.state.x, this.state.y)
   };
-  //   console.log("in apple,", props.ax, props.ay);
 
-  apple = props => {
-    console.log("in apple,", x, y);
+  apple = () => {
+    console.log("apple in apple.js,", this.state.x, this.state.y);
   };
   render() {
     return (
@@ -29,24 +29,6 @@ class Apple extends React.Component {
       />
     );
   }
-  //   this.setState({
-  //     apple: [{ x: ax, y: ay }]
-  //   });
 }
-
-// const Cell = props => {
-//   const { x, y } = props;
-//   return (
-//     <div
-//       className="Cell"
-//       style={{
-//         left: `${CELL_SIZE * x + 1}px`,
-//         top: `${CELL_SIZE * y + 1}px`,
-//         width: `${CELL_SIZE - 1}px`,
-//         height: `${CELL_SIZE - 1}px`
-//       }}
-//     />
-//   );
-// };
 
 export default Apple;

@@ -4,8 +4,8 @@ import "./dragon.css";
 import Cell from "./Cell";
 import Apple from "./apple";
 
-import makeEmpyBoard from "./Makeboard.js";
-import makecells from "./Makeboard";
+// import makeEmpyBoard from "./Makeboard.js";
+// import makecells from "./Makeboard";
 
 const CELL_SIZE = 20;
 const WIDTH = 800;
@@ -37,12 +37,9 @@ class Dragon extends React.Component {
     running: false,
     interval: 500,
     direction: "right",
-    apple: [{ x: 9, y: 5 }]
+    apple: [{ x: Apple.ax, y: Apple.ay }]
   };
 
-  // makeEmptyBoard()
-
-  // makeCells(){}
   //   Create empty board
   makeEmptyBoard() {
     let board = [];
@@ -77,7 +74,7 @@ class Dragon extends React.Component {
     let direction;
     const snakeHead = this.state.cells[0];
     console.log(this.state.cells);
-    console.log("this is the apple ", this.state.apple);
+    console.log("apple in index.js", this.state.Apple);
 
     switch (event.keyCode) {
       case 37:
