@@ -77,6 +77,7 @@ class Dragon extends React.Component {
     let direction;
     const snakeHead = this.state.cells[0];
     console.log(this.state.cells);
+    console.log("this is the apple ", this.state.apple);
 
     switch (event.keyCode) {
       case 37:

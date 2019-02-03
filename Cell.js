@@ -5,6 +5,7 @@ const CELL_SIZE = 20;
 
 const Cell = props => {
   const { x, y } = props;
+
   return (
     <div
       className="Cell"
