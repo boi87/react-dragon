@@ -2,38 +2,14 @@ import React from "react";
 import { render } from "react-dom";
 import "./dragon.css";
 import Cell from "./Cell";
+import Apple from "./apple";
+
+import makeEmpyBoard from "./Makeboard.js";
+import makecells from "./Makeboard";
 
 const CELL_SIZE = 20;
 const WIDTH = 800;
 const HEIGHT = 600;
-
-// class Cell extends React.Component {
-// render() {
-// // console.log('in the cell');
-
-// const { x, y } = this.props;
-// // console.log('in the props', this.props);
-
-// return (
-// <div
-// className="Cell"
-// style={{
-// left: `${CELL_SIZE * x + 1}px`,
-// top: `${CELL_SIZE * y + 1}px`,
-// width: `${CELL_SIZE - 1}px`,
-// height: `${CELL_SIZE - 1}px`
-// }}
-// />
-// );
-// }
-// }
-
-// const Cell = props => {
-// // state: {
-// const x = props.x;
-// const y = props.y;
-// // } // your cell div with coordinates
-// };
 
 class Dragon extends React.Component {
   constructor() {
@@ -60,12 +36,17 @@ class Dragon extends React.Component {
     ],
     running: false,
     interval: 500,
-    direction: "right"
+    direction: "right",
+    apple: [{ x: 9, y: 5 }]
   };
 
-  // Create empty board
+  // makeEmptyBoard()
+
+  // makeCells(){}
+  //   Create empty board
   makeEmptyBoard() {
     let board = [];
+    ``;
     for (let y = 0; y < this.rows; y++) {
       board[y] = [];
       for (let x = 0; x < this.cols; x++) {
@@ -75,7 +56,7 @@ class Dragon extends React.Component {
     return board;
   }
 
-  // Create cells from this.board
+  //   Create cells from this.board
   makeCells() {
     console.log("in the makecells");
 
@@ -170,7 +151,8 @@ class Dragon extends React.Component {
     const nextCell = { x, y };
 
     this.setState({
-      cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length)
+      cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length),
+      apple: [{ x: this.props.ax, y: this.props.ay }]
     });
 
     if (
@@ -211,9 +193,9 @@ class Dragon extends React.Component {
         <button id="btn_start" onClick={this.handleClick}>
           start
         </button>
-        <button id="btn_stop" onClick="">
-          stop
-        </button>
+        {/* <button id="btn_stop" onClick=""> */}
+        {/* stop */}
+        {/* </button> */}
 
         <div
           tabIndex="1"
@@ -227,6 +209,7 @@ class Dragon extends React.Component {
           {cells.map((cell, index) => (
             <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}${index}`} />
           ))}
+          <Apple />
         </div>
       </div>
     );
