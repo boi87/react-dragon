@@ -77,6 +77,8 @@ class Dragon extends React.Component {
     console.log(this.state.cells);
     console.log("apple in index.js", apple);
 
+    // this.state.cells.map(i => {
+    // if (this.state.cells.indexOf(snakeHead) > 0) {
     switch (event.keyCode) {
       case 37:
         event.preventDefault();
@@ -108,7 +110,11 @@ class Dragon extends React.Component {
           : (direction = "up");
         break;
     }
-
+    // } else {
+    //   direction = direction;
+    //   console.log("you bit yourself and you are dead");
+    // }
+    // });
     console.log("this is snakehead", snakeHead);
 
     this.setState({
@@ -143,10 +149,9 @@ class Dragon extends React.Component {
 
     const nextCell = { x, y };
 
-    if (snakeHead)
-      this.setState({
-        cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length)
-      });
+    this.setState({
+      cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length)
+    });
 
     if (
       snakeHead.x < 0 ||
@@ -207,7 +212,5 @@ class Dragon extends React.Component {
     );
   }
 }
-
-// render(<Dragon />, document.getElementById('root'));
 
 export { Dragon, Cell };
