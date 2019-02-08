@@ -37,18 +37,14 @@ class Dragon extends React.Component {
     running: false,
     interval: 500,
     direction: "right",
-    // apple: {
     ax: Math.floor(Math.random() * 39),
     ay: Math.floor(Math.random() * 29)
-    // }
-
-    // apple: [{ x: Apple.x, y: Apple.y }]
   };
 
   //   Create empty board
   makeEmptyBoard() {
     let board = [];
-    ``;
+    // ``;
     for (let y = 0; y < this.rows; y++) {
       board[y] = [];
       for (let x = 0; x < this.cols; x++) {
@@ -75,11 +71,11 @@ class Dragon extends React.Component {
 
   // switch directions and handle keypress
   handleKeyPress = event => {
-    // console.log(event);
     let direction;
     const snakeHead = this.state.cells[0];
+    const apple = { x: this.state.ax, y: this.state.ay };
     console.log(this.state.cells);
-    console.log("apple in index.js", this.state.ax, this.state.ay);
+    console.log("apple in index.js", apple);
 
     switch (event.keyCode) {
       case 37:
@@ -113,16 +109,11 @@ class Dragon extends React.Component {
         break;
     }
 
-    // const nextCell = { x, y };
-
     console.log("this is snakehead", snakeHead);
-    // console.log('nextcell!', nextCell);
 
-    // setInterval(() => {
     this.setState({
       direction: direction
     });
-    // }, this.state.interval);
   };
 
   calculateNextCell = () => {
@@ -132,31 +123,30 @@ class Dragon extends React.Component {
       case "right":
         x = snakeHead.x + 1;
         y = snakeHead.y;
-
         break;
+
       case "left":
         x = snakeHead.x - 1;
         y = snakeHead.y;
-
         break;
+
       case "down":
         y = snakeHead.y + 1;
         x = snakeHead.x;
-
         break;
+
       case "up":
         y = snakeHead.y - 1;
         x = snakeHead.x;
-
         break;
     }
 
     const nextCell = { x, y };
 
-    this.setState({
-      cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length),
-      apple: [{ x: this.props.ax, y: this.props.ay }]
-    });
+    if (snakeHead)
+      this.setState({
+        cells: [nextCell, ...this.state.cells].slice(0, this.state.cells.length)
+      });
 
     if (
       snakeHead.x < 0 ||
@@ -174,7 +164,6 @@ class Dragon extends React.Component {
           { x: 3, y: 5 },
           { x: 2, y: 5 }
         ]
-        // direction: this.right
       });
     }
   };
